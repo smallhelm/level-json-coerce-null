@@ -1,6 +1,6 @@
 {
   "name": "level-json-coerce-null",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "db.put(key, undefined....) will give you problems. This codec fixes it.",
   "main": "index.js",
   "scripts": {
