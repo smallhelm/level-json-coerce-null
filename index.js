@@ -5,7 +5,12 @@ module.exports = {
     }
     return JSON.stringify(val);
   },
-  decode: JSON.parse,
+  decode: function(val){
+    if(val === ""){//this was likely inserted in the db by encode(void 0)
+      return null;
+    }
+    return JSON.parse(val);
+  },
   buffer: false,
   type: "json-coerce-null"
 };

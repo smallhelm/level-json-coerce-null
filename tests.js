@@ -26,7 +26,7 @@ var assertRecode = function(db, t, input, has_in_err, output, has_out_err){
 };
 
 test("the problem exists in level-codec json", function(t){
-  var db = levelup("/blah", {
+  var db = levelup("/blah0", {
     db: memdown,
     keyEncoding: "utf-8",
     valueEncoding: "json"
@@ -42,7 +42,7 @@ test("the problem exists in level-codec json", function(t){
 });
 
 test("the problem is fixed with this codec", function(t){
-  var db = levelup("/blah", {
+  var db = levelup("/blah1", {
     db: memdown,
     keyEncoding: "utf-8",
     valueEncoding: safejson
@@ -55,4 +55,10 @@ test("the problem is fixed with this codec", function(t){
   a(null, false, null, false);
   a(NaN, false, null, false);
   a(void 0, false, null, false);//notice it coreced to null
+});
+
+test("decode an undefined encoded by the default json codec", function(t){
+  //default json codec encodes the key to ""
+  t.equals(safejson.decode(""), null);
+  t.end();
 });
