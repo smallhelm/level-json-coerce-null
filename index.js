@@ -7,5 +7,5 @@ module.exports = {
   },
   decode: JSON.parse,
   buffer: false,
-  type: "safejson"
+  type: "json-coerce-null"
 };
